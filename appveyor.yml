@@ -3,11 +3,11 @@ environment:
 image:
 - Visual Studio 2015
 - Ubuntu
-stack: node 9
+stack: node 6
 
 # Install scripts. (runs after repo cloning)
 install:
-  - ps: Install-Product node 9
+  - ps: Install-Product node 6
   # install modules
   - npm install
 
