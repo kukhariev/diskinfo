@@ -5,6 +5,7 @@ stack: node 9
 
 # Install scripts. (runs after repo cloning)
 install:
+  - ps: Install-Product node 9
   # install modules
   - npm install
 
