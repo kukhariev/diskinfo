@@ -11,7 +11,7 @@
 npm install @dropb/diskinfo
 ```
 
-## Usage
+## Usage examples
 
 ```js
 // JS example (Windows)
@@ -111,14 +111,14 @@ interface DiskInfo {
 }
 ```
 
-## License
-
-[MIT](LICENSE)
-
-## Links
+## References
 
 * [df](https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html)
 * [Win32_LogicalDisk WMI class](https://msdn.microsoft.com/en-us/library/windows/desktop/aa394173(v=vs.85).aspx)
+
+## License
+
+[MIT](LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/@dropb/diskinfo.svg
 [npm-url]: https://www.npmjs.com/package/@dropb/diskinfo
