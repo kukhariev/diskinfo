@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./lib",
+    "target": "es2015",
+    "declaration": true,
+    "noImplicitAny": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./test/*.spec.ts"],
+
+}
