@@ -2,7 +2,7 @@
 
 >Disk usage info on both *nix (via `df`) and Windows (via `WMIC`) systems
 
-<!-- [![npm version][npm-image]][npm-url] -->
+[![npm version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
 [![Build status][appveyor-image]][appveyor-url]
 
