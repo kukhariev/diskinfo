@@ -15,38 +15,60 @@ npm install --save @dropb/diskinfo
 ## Usage
 
 ```js
+// JS example (Windows)
+
 const { diskinfo } = require('@dropb/diskinfo');
 
 diskinfo().then(result => {
   console.log(result);
-/*
-[{
-  fstype: 'udev',
-  size: 1999568896,
-  used: 0,
-  avail: 1999568896,
-  pcent: '0%',
-  target: '/dev'
-},
-{
-  fstype: 'tmpfs',
-  size: 404099072,
-  used: 15040512,
-  avail: 389058560,
-  pcent: '4%',
-  target: '/run'
-},
-{
-  fstype: '/dev/sda5',
-  size: 107569381376,
-  used: 100433367040,
-  avail: 1648140288,
-  pcent: '99%',
-  target: '/'
-},
- ...
-*/
 });
+/* OUTPUT:
+[{
+    fstype: '3',
+    size: 189879426220032,
+    used: 53218675523584,
+    avail: 136660750696448,
+    pcent: '29%',
+    target: 'C:'
+  },
+  {
+    fstype: '2',
+    size: 16431471132672,
+    used: 4540711567360,
+    avail: 11890759565312,
+    pcent: '28%',
+    target: 'F:'
+  },
+  {
+    fstype: '4',
+    size: 110151046529024,
+    used: 108627465601024,
+    avail: 1523580928000,
+    pcent: '99%',
+    target: 'V:'
+  }
+];*/
+```
+
+```ts
+// Typescript example (Ubuntu)
+
+import { diskinfo, DiskInfo } from '@dropb/diskinfo';
+
+async function run() {
+  const result: DiskInfo = await diskinfo('./');
+  console.log(result)
+}
+run();
+/* OUTPUT:
+{ fstype: '/dev/sda1',
+  size: 47242534912,
+  used: 21033943040,
+  avail: 23785177088,
+  pcent: '47%',
+  target: '/' }
+*/
+
 ```
 
 ## License

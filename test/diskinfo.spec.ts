@@ -19,7 +19,7 @@ describe(`${diskinfo.name} test:\n`, () => {
   });
   it('should fails if target is bad', async () => {
     try {
-      const dfout = await diskinfo('m:/');
+      const dfout = await diskinfo('I`mNotExist');
     } catch (error) {
       expect(error).to.be.an.instanceof(Error);
       console.log(error.message);
