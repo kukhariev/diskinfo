@@ -1,6 +1,6 @@
 # diskinfo
 
-cross-platform Node.js "df \-kP"
+>Disk usage info on both *nix (via `df`) and Windows (via `WMIC`) systems
 
 <!-- [![npm version][npm-image]][npm-url] -->
 [![Build status][travis-image]][travis-url]
@@ -9,7 +9,7 @@ cross-platform Node.js "df \-kP"
 ## Install
 
 ```sh
-npm install --save @dropb/diskinfo
+npm install @dropb/diskinfo
 ```
 
 ## Usage
@@ -19,9 +19,7 @@ npm install --save @dropb/diskinfo
 
 const { diskinfo } = require('@dropb/diskinfo');
 
-diskinfo().then(result => {
-  console.log(result);
-});
+diskinfo().then(result => console.log(result));
 /* OUTPUT:
 [{
     fstype: '3',
@@ -46,8 +44,8 @@ diskinfo().then(result => {
     avail: 1523580928000,
     pcent: '99%',
     target: 'V:'
-  }
-];*/
+  }]
+*/
 ```
 
 ```ts
@@ -71,9 +69,57 @@ run();
 
 ```
 
+## API
+
+```ts
+declare function diskinfo(file: string): Promise<DiskInfo>;
+declare function diskinfo(): Promise<DiskInfo[]>;
+
+interface DiskInfo {
+    /**
+     * POSIX - File system type
+     *
+     * Win32 - DriveType:
+     * - "0": Unknown
+     * - "1": No Root Directory
+     * - "2": Removable Disk
+     * - "3": Local Disk
+     * - "4": Network Drive
+     * - "5": Compact Disc
+     * - "6": RAM Disk
+     */
+    fstype: string;
+    /**
+     * Total size in bytes
+     */
+    size: number;
+    /**
+     * Used size in bytes
+     */
+    used: number;
+    /**
+     * Available size in bytes
+     */
+    avail: number;
+    /**
+     * Percentage of used divided by size
+     */
+    pcent: string;
+    /**
+     * Mount point
+     */
+    target: string;
+}
+```
+
 ## License
 
-MIT
+[MIT](LICENSE)
+
+## Links
+
+* [df](https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html)
+* [Win32_LogicalDisk WMI class](https://msdn.microsoft.com/en-us/library/windows/desktop/aa394173(v=vs.85).aspx)
 
 [npm-image]: https://img.shields.io/npm/v/@dropb/diskinfo.svg
 [npm-url]: https://www.npmjs.com/package/@dropb/diskinfo
