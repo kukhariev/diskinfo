@@ -1,4 +1,5 @@
 import { execFile } from 'child_process';
+import { existsSync } from 'fs';
 import { posix } from './posix';
 import { win32 } from './win32';
 export interface DiskInfo {
@@ -42,10 +43,13 @@ function diskinfo(): Promise<DiskInfo[]>;
 function diskinfo(file?: string): Promise<DiskInfo | DiskInfo[]> {
   return new Promise((resolve, reject) => {
     const isWin = process.platform === 'win32';
+    if (file && !existsSync(file)) {
+      reject(new Error(`No such file or directory: \`${file}\``));
+    }
     const { exe, args, parse } = isWin ? win32(file) : posix(file);
     execFile(exe, args, { timeout: 5000 }, (error, stdout, stderr) => {
       if (error || stderr) {
-        reject(new Error(stderr.trim() || error.message || 'undefined error' ));
+        reject(new Error((stderr.trim() || error.message)));
       } else {
         const info = parse(stdout);
         resolve(file ? info[0] : info);

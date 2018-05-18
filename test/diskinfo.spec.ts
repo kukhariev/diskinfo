@@ -20,6 +20,7 @@ describe(`${diskinfo.name} test:\n`, () => {
   it('should fails if file path is wrong', async () => {
     try {
       const dfout = await diskinfo('I`mNotExist');
+      expect(dfout).to.be.undefined;
     } catch (error) {
       console.log(error.message);
       expect(error).to.be.an.instanceof(Error);
