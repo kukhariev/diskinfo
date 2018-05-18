@@ -43,7 +43,7 @@ function diskinfo(file?: string): Promise<DiskInfo | DiskInfo[]> {
   return new Promise((resolve, reject) => {
     const isWin = process.platform === 'win32';
     const { exe, args, parse } = isWin ? win32(file) : posix(file);
-    execFile(exe, args, { timeout: 1000 }, (error, stdout, stderr) => {
+    execFile(exe, args, { timeout: 5000 }, (error, stdout, stderr) => {
       if (error || stderr) {
         reject(new Error(stderr.trim() || error.message || 'undefined error' ));
       } else {
