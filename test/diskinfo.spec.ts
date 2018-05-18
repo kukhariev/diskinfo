@@ -2,17 +2,17 @@ import { expect } from 'chai';
 import { diskinfo } from '../src/';
 
 describe(`${diskinfo.name} test:\n`, () => {
-  it('should enumerate file systems', async () => {
+  it('should enumerate all file systems', async () => {
     const dfout = await diskinfo();
     console.log(dfout);
     expect(dfout[0]).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
   });
-  it('async -> target', async () => {
+  it('should get current disk info', async () => {
     const dfout = await diskinfo('./');
     console.log(dfout);
     expect(dfout).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
   });
-  it('async -> file', async () => {
+  it('should get current disk info ||', async () => {
     const dfout = await diskinfo('package.json');
     console.log(dfout);
     expect(dfout).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
@@ -21,8 +21,9 @@ describe(`${diskinfo.name} test:\n`, () => {
     try {
       const dfout = await diskinfo('I`mNotExist');
     } catch (error) {
-      expect(error).to.be.an.instanceof(Error);
       console.log(error.message);
+      expect(error).to.be.an.instanceof(Error);
+      expect(error.message).to.have.lengthOf.at.least(3);
     }
   });
 });
