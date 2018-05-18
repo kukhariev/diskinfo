@@ -43,12 +43,12 @@ function diskinfo(file?: string): Promise<DiskInfo | DiskInfo[]> {
   return new Promise((resolve, reject) => {
     const isWin = process.platform === 'win32';
     const { exe, args, parse } = isWin ? win32(file) : posix(file);
-    execFile(exe, args, { timeout: 0, encoding: 'utf8' }, (error, stdout, stderr) => {
+    execFile(exe, args, { timeout: 1000 }, (error, stdout, stderr) => {
       if (error || stderr) {
-        reject(new Error(stderr.trim()));
+        reject(new Error(stderr.trim() || error.message || 'undefined error' ));
       } else {
-        const data = parse(stdout);
-        resolve(file ? data[0] : data);
+        const info = parse(stdout);
+        resolve(file ? info[0] : info);
       }
     });
   });
