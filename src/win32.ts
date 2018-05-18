@@ -6,14 +6,14 @@ export const win32 = (file: string) => {
       .split('\n')
       .slice(1)
       .map(row => {
-        const cols = row.replace(/[\s]+/g, '\t').split('\t');
+        const cells = row.replace(/[\s]+/g, '\t').split('\t');
         return {
-          fstype: cols[0],
-          size: +cols[3] * 1024,
-          used: (+cols[3] - +cols[1]) * 1024,
-          avail: +cols[1] * 1024,
-          pcent: Math.ceil(100 * (+cols[3] - +cols[1]) / +cols[3]) + '%',
-          target: cols[2]
+          fstype: cells[0],
+          size: +cells[3] * 1024,
+          used: (+cells[3] - +cells[1]) * 1024,
+          avail: +cells[1] * 1024,
+          pcent: Math.ceil(100 * (+cells[3] - +cells[1]) / +cells[3]) + '%',
+          target: cells[2]
         };
       });
   };
