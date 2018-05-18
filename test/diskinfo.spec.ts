@@ -18,13 +18,14 @@ describe(`${diskinfo.name} test:\n`, () => {
     expect(dfout).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
   });
   it('should fails if file path is wrong', async () => {
+    let error;
     try {
       const dfout = await diskinfo('I`mNotExist');
-      expect(dfout).to.be.undefined;
-    } catch (error) {
-      console.log(error.message);
-      expect(error).to.be.an.instanceof(Error);
-      expect(error.message).to.have.lengthOf.at.least(3);
+    } catch (err) {
+      error = err;
     }
+    expect(error).to.be.an.instanceof(Error);
+    expect(error.message).to.have.lengthOf.at.least(3);
+    console.log(error.message);
   });
 });
