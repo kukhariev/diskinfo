@@ -71,14 +71,25 @@ run();
 ## API
 
 ```ts
-declare function diskinfo(file: string): Promise<DiskInfo>;
-declare function diskinfo(): Promise<DiskInfo[]>;
+/**
+ * @param file - get info of the filesystem containing the specified file or directory
+ * @returns promise for an object with the info for the specified file or directory
+ */
+function diskinfo(file: string): Promise<DiskInfo>;
 
+/**
+ * @returns promise for an array with the info for all mounted filesystem
+ */
+function diskinfo(): Promise<DiskInfo[]>;
+
+/**
+ * Info of the filesystem
+ */
 interface DiskInfo {
     /**
      * POSIX - File system type
      *
-     * Win32 - DriveType:
+     * Win32 - Win32_LogicalDisk DriveType(as `String`!):
      * - "0": Unknown
      * - "1": No Root Directory
      * - "2": Removable Disk
