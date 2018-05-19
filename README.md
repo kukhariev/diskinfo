@@ -18,7 +18,9 @@ npm install @dropb/diskinfo
 
 const { diskinfo } = require('@dropb/diskinfo');
 
-diskinfo().then(result => console.log(result));
+diskinfo()
+  .then(result => console.log(result))
+  .catch(err => console.error(err.message));
 /* OUTPUT:
 [{
     fstype: '3',
