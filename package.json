@@ -1,8 +1,15 @@
 {
   "name": "@dropb/diskinfo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get disk usage info",
-  "keywords": ["df", "disk", "wmic", "filesystem", "mount", "size"],
+  "keywords": [
+    "df",
+    "disk",
+    "wmic",
+    "filesystem",
+    "mount",
+    "size"
+  ],
   "author": {
     "name": "kukhariev",
     "email": "q_h@inbox.ru"
@@ -12,7 +19,9 @@
     "npm": ">= 6.0.0"
   },
   "license": "MIT",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
