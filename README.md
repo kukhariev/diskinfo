@@ -2,7 +2,7 @@
 
 >Disk usage info on both *nix (via `df`) and Windows (via `WMIC`) systems
 
-[![npm version][npm-image]][npm-url]
+[![npm z][npm-image]][npm-url]
 [![Build status][appveyor-image]][appveyor-url]
 
 ## Install
@@ -133,7 +133,7 @@ interface DiskInfo {
 
 [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/@dropb/diskinfo.svg
+[npm-image]: https://badge.fury.io/js/%40dropb%2Fdiskinfo.svg
 [npm-url]: https://www.npmjs.com/package/@dropb/diskinfo
 [appveyor-image]:https://ci.appveyor.com/api/projects/status/github/kukhariev/diskinfo
 [appveyor-url]: https://ci.appveyor.com/project/kukhariev/diskinfo
