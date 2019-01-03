@@ -9,9 +9,9 @@ export const win32 = (file: string) => {
         const cells = row.replace(/[\s]+/g, '\t').split('\t');
         return {
           fstype: cells[0],
-          size: +cells[3] * 1024,
-          used: (+cells[3] - +cells[1]) * 1024,
-          avail: +cells[1] * 1024,
+          size: +cells[3],
+          used: (+cells[3] - +cells[1]),
+          avail: +cells[1],
           pcent: Math.ceil(100 * (+cells[3] - +cells[1]) / +cells[3]) + '%',
           target: cells[2]
         };
