@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 test/example.js
+package-lock.json
