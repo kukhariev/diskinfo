@@ -5,14 +5,15 @@ export const posix = (file: string) => {
       .split('\n')
       .slice(1)
       .map(row => {
-        const cells = row.replace(/[\s]+/g, '\t').split('\t');
+        const [first, target] = row.split(/%\s+/);
+        const [fstype, size, used, avail, pcent] = first.split(/\s+/);
         return {
-          fstype: cells[0],
-          size: +cells[1] * 1024,
-          used: +cells[2] * 1024,
-          avail: +cells[3] * 1024,
-          pcent: cells[4],
-          target: cells[5]
+          fstype,
+          size: +size * 1024,
+          used: +used * 1024,
+          avail: +avail * 1024,
+          pcent,
+          target
         };
       });
   };

@@ -56,19 +56,19 @@ function diskinfo(file: string): Promise<DiskInfo>;
  */
 function diskinfo(): Promise<DiskInfo[]>;
 
-function diskinfo(file?: string): Promise<DiskInfo | DiskInfo[]> {
+function diskinfo(path?: string): Promise<DiskInfo | DiskInfo[]> {
   return new Promise((resolve, reject) => {
     const isWin = process.platform === 'win32';
-    if (file && !existsSync(file)) {
-      reject(new Error(`No such file or directory: \`${file}\``));
+    if (path && !existsSync(path)) {
+      reject(new Error(`No such file or directory: "${path}"`));
     }
-    const { exe, args, parse } = isWin ? win32(file) : posix(file);
+    const { exe, args, parse } = isWin ? win32(path) : posix(path);
     execFile(exe, args, { timeout: 5000 }, (error, stdout, stderr) => {
       if (error || stderr) {
         reject(new Error(stderr.trim() || error.message));
       } else {
         const info = parse(stdout);
-        resolve(file ? info[0] : info);
+        resolve(path ? info[0] : info);
       }
     });
   });

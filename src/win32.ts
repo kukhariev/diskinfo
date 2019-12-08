@@ -6,13 +6,13 @@ export const win32 = (file: string) => {
       .split('\n')
       .slice(1)
       .map(row => {
-        const cells = row.replace(/[\s]+/g, '\t').split('\t');
+        const cells = row.replace(/\s+/g, '\t').split('\t');
         return {
           fstype: cells[0],
           size: +cells[3],
-          used: (+cells[3] - +cells[1]),
+          used: +cells[3] - +cells[1],
           avail: +cells[1],
-          pcent: Math.ceil(100 * (+cells[3] - +cells[1]) / +cells[3]) + '%',
+          pcent: Math.ceil((100 * (+cells[3] - +cells[1])) / +cells[3]) + '%',
           target: cells[2]
         };
       });
