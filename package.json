@@ -1,6 +1,6 @@
 {
   "name": "@dropb/diskinfo",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "description": "Get disk usage info",
   "keywords": [
     "df",
