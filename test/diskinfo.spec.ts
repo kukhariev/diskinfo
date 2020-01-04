@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { diskinfo } from '../src/';
 
-describe(`${diskinfo.name} test:\n`, () => {
+describe(`diskinfo`, () => {
   it('should enumerate all file systems', async () => {
     const dfout = await diskinfo();
     expect(dfout[0]).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
@@ -17,7 +17,7 @@ describe(`${diskinfo.name} test:\n`, () => {
   it('should fails if file path is wrong', async () => {
     let error: Error;
     try {
-      const dfout = await diskinfo('NotExisting');
+      await diskinfo('NotExisting');
     } catch (err) {
       error = err;
     }
