@@ -26,11 +26,11 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run tslint && npm run clean && npm run build-ts ",
-    "test": "./node_modules/.bin/mocha",
-    "test:watch": "./node_modules/.bin/mocha --watch",
-    "build-ts": "tsc",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "ci": "npm run lint && npm run clean && npm run build",
+    "test": "mocha",
+    "test:watch": "mocha --watch",
+    "build": "tsc",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "devDependencies": {
     "@types/chai": "4.2.7",
