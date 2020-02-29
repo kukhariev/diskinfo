@@ -37,6 +37,6 @@
     "mocha": "7.1.0",
     "tslint": "5.20.1",
     "ts-node": "8.6.2",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   }
 }
