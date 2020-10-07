@@ -30,7 +30,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "devDependencies": {
-    "@types/chai": "4.2.12",
+    "@types/chai": "4.2.13",
     "@types/mocha": "7.0.2",
     "@types/node": "10.17.37",
     "chai": "4.2.0",
