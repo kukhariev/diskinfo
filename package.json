@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/chai": "4.2.15",
     "@types/mocha": "8.2.1",
-    "@types/node": "10.17.54",
+    "@types/node": "10.17.55",
     "chai": "4.3.3",
     "mocha": "8.3.1",
     "tslint": "6.1.3",
