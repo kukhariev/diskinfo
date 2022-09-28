@@ -12,7 +12,7 @@ export const win32 = (file: string) => {
           size: +size,
           used: +size - +avail,
           avail: +avail,
-          pcent: Math.ceil((100 * (+size - +avail)) / +size) + '%',
+          pcent: `${Math.ceil((100 * (+size - +avail)) / +size)}%`,
           target
         };
       });
