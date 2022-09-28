@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { diskinfo } from '../src/';
 
-describe(`diskinfo`, () => {
+describe('diskinfo', () => {
   it('should enumerate all file systems', async () => {
     const dfout = await diskinfo();
     expect(dfout[0]).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
@@ -17,14 +17,14 @@ describe(`diskinfo`, () => {
     expect(dfout).to.include.keys('fstype', 'size', 'used', 'avail', 'pcent', 'target');
   });
 
-  it('should fails if file path is wrong', async () => {
-    let error: Error;
-    try {
-      await diskinfo('NotExisting');
-    } catch (err) {
-      error = err;
-    }
-    expect(error).to.be.an.instanceof(Error);
-    expect(error.message).to.include('NotExisting');
+  it('should fails if file path is wrong', () => {
+    diskinfo('NotExisting')
+      .then(() => {
+        throw new Error('Was not supposed to resolve!')
+      })
+      .catch((e) => {
+        expect(e).to.be.an.instanceof(Error);
+        expect(e.message).to.include('No such file or directory: "NotExisting"');
+      })
   });
 });
